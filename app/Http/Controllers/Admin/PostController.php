@@ -8,6 +8,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 class PostController extends Controller
 {
+
+    private function findBySlug($slug){
+        $post = Post::where("slug" , $slug)->first();
+        if(!$post){
+            abort(404);
+        }
+        return $post;
+    }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -78,7 +90,7 @@ class PostController extends Controller
         return $toReturn;
         
         //redirect su una pagina desiderata
-        return redirect()->route("admin.posts.show" , $post->id);
+        return redirect()->route("admin.posts.show" , $post->slug);
     }
 
     /**
@@ -89,10 +101,8 @@ class PostController extends Controller
      */
     public function show($slug)
     {
-        $post = Post::where("slug" , $slug)->first();
-        if(!$post){
-            abort(404);
-        }
+        $post = $this->findBySlug($slug);
+
         return view("admin.posts.show", compact("post"));
     }
 
@@ -105,10 +115,8 @@ class PostController extends Controller
     public function edit($slug)
     {
         
-        $post = Post::where("slug" , $slug)->first();
-        if(!$post){
-            abort(404);
-        }
+        $post = $this->findBySlug($slug);
+
         return view("admin.posts.edit", compact("post"));
         
     }
@@ -122,10 +130,16 @@ class PostController extends Controller
      */
     public function update(Request $request, $slug)
     {
-        $post = Post::where("slug" , $slug)->first();
-        if(!$post){
-            abort(404);
-        }
+        $validatedData = $request->validate([
+            "title"=>"required|min:10",
+            "content" => "required|min:10"
+        ]);
+
+        $post = $this->findBySlug($slug);
+
+        $post->update($validatedData);
+        return redirect()->route("admin.posts.show" , $post->slug);
+
     }
 
     /**
@@ -134,8 +148,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($slug)
     {
-        //
+        $post = $this->findBySlug($slug);
+        
     }
 }
