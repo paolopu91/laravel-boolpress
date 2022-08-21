@@ -20,4 +20,21 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-Route::get('/admin', 'Admin\HomeController@index')->name('admin.index');
+
+Route::middleware("auth")
+->namespace("Admin") //indica la cartella dove si trovani i controller
+->name("admin.") // Aggiunge prima del nome di ogni rotta questo prefisso
+->prefix("admin") //Aggiunge prima di ogni uri questo prefisso
+->group(function(){
+
+    Route::get('/', 'HomeController@index')->name('index');
+    Route::get('/test', 'HomeController@index')->name('test');
+    Route::get('/post/create', 'HomeController@index')->name('posts.create');
+    Route::get('/posts/{posts}/edit', 'HomeController@index')->name('posts.edit');
+
+
+    Route::resource("post", "PostController");
+});
+
+
+

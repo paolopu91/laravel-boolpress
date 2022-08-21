@@ -4,21 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class NoLoggedInController extends Controller
 {
-
-    /**
+     /**
      * Show the application dashboard.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
-        return view('welcome');
-    }
-
-    public function test ()
-    {
-        return "No logged in";
+        return view('NoLoggedIn');
     }
 }
