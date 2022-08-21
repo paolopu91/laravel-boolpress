@@ -13,28 +13,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
+// Route::middleware("auth")
+// ->namespace("Admin") //indica la cartella dove si trovani i controller
+// ->name("admin.") // Aggiunge prima del nome di ogni rotta questo prefisso
+// ->prefix("admin") //Aggiunge prima di ogni uri questo prefisso
+// ->group(function(){
+
+//     Route::get('/', 'HomeController@index')->name('index');
+//     Route::get('/test', 'HomeController@test')->name('test');
+//     // Route::get('/posts/create', 'HomeController@test')->name('posts.create');
+//     // Route::get('/posts/{posts}/edit', 'HomeController@test')->name('posts.edit');
+
+
+//     Route::resource("posts", "PostController");
+// });
+
+
 Route::middleware("auth")
-->namespace("Admin") //indica la cartella dove si trovani i controller
-->name("admin.") // Aggiunge prima del nome di ogni rotta questo prefisso
-->prefix("admin") //Aggiunge prima di ogni uri questo prefisso
-->group(function(){
-
+  ->namespace("Admin") // indica la cartella dove si trovano i controller
+  ->name("admin.") // Aggiungie prima del nome di ogni rotta questo prefisso
+  ->prefix("admin") // Aggiunge prima di ogni URI questo pregisso
+  ->group(function () {
     Route::get('/', 'HomeController@index')->name('index');
-    Route::get('/test', 'HomeController@index')->name('test');
-    Route::get('/post/create', 'HomeController@index')->name('posts.create');
-    Route::get('/posts/{posts}/edit', 'HomeController@index')->name('posts.edit');
+    Route::get('/test', 'HomeController@test')->name('test');
+    // Route::get('/posts/create', 'HomeController@test')->name('posts.create');
+    // Route::get('/posts/{post}/edit', 'HomeController@test')->name('posts.edit');
 
-
-    Route::resource("post", "PostController");
-});
-
+    Route::resource("posts", "PostController");
+  });
 
 

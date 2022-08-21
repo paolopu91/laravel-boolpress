@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class PostController extends Controller
 {
     /**
@@ -37,7 +37,48 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Valido i dati ricevuti
+        $validatedData = $request->validate([
+            "title"=>"required|min:10",
+            "content" => "required|min:10"
+        ]);
+
+        //Salvo nel db i dati del nuovo post creato
+        $post = new Post();
+
+        $post->fill($validatedData);
+        
+
+        $post->slug= Str::slug($post->title);
+
+        $toReturn = null;
+        $counter = 0;
+        //controllo se lo slug esiste già nel mio db con un ciclo do-while
+        do {
+            // generiamo uno slug partendo dal titolo
+            $slug = Str::slug($post->title);
+
+            // se il counter é maggiore di 0, concateno il suo valore allo slug
+            if ($counter > 0) {
+                $slug .= "-" . $counter;
+            }
+
+            // controllo a db se esiste già uno slug uguale
+            $slug_esiste = Post::where("slug", $slug)->first();
+
+            if ($slug_esiste) {
+                // se esiste, incremento il contatore per il ciclo successivo
+                $counter++;
+            } else {
+                // Altrimenti salvo lo slug nei dati del nuovo post
+                $toReturn = $slug;
+            }
+        } while ($slug_esiste);
+            $post->save();
+        return $toReturn;
+        
+        //redirect su una pagina desiderata
+        return redirect()->route("admin.posts.show" , $post->id);
     }
 
     /**
@@ -46,10 +87,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $post = Post::findOrFail($id);
-        return view("admin.posts.show");
+        $post = Post::where("slug" , $slug)->first();
+        if(!$post){
+            abort(404);
+        }
+        return view("admin.posts.show", compact("post"));
     }
 
     /**
@@ -58,10 +102,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
         
-        $post = Post::findOrFail($id);
+        $post = Post::where("slug" , $slug)->first();
+        if(!$post){
+            abort(404);
+        }
         return view("admin.posts.edit", compact("post"));
         
     }
@@ -73,9 +120,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $post = Post::where("slug" , $slug)->first();
+        if(!$post){
+            abort(404);
+        }
     }
 
     /**
