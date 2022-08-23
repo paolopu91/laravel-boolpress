@@ -23,15 +23,7 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
-                  {{-- <a class="btn btn-info btn-sm" href="{{ route('admin.posts.show', ['post' => $post->slug]) }}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                      class="feather feather-activity">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                      <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                  </a>
-                  <a class="btn btn-warning btn-sm" href="{{ route('admin.posts.edit', ['post' => $post->slug]) }}">
+                  <a class="btn btn-warning btn-sm" href="{{ route('admin.users.edit', ['user' => $user->slug]) }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                       class="feather feather-activity">
@@ -39,8 +31,24 @@
                       <line x1="3" y1="22" x2="21" y2="22"></line>
                     </svg>
                   </a>
-                  <form class="d-inline-block" action="{{ route('admin.posts.destroy', ['post' => $post->slug]) }}"
-                    method="post">
+                  {{-- <a class="btn btn-info btn-sm" href="{{ route('admin.users.show', ['user' => $user->slug]) }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-activity">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                      <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                  </a>
+                  <a class="btn btn-warning btn-sm" href="{{ route('admin.users.edit', ['user' => $user->slug]) }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      class="feather feather-activity">
+                      <polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon>
+                      <line x1="3" y1="22" x2="21" y2="22"></line>
+                    </svg>
+                  </a>
+                  <form class="d-inline-block" action="{{ route('admin.users.destroy', ['user' => $user->slug]) }}"
+                    method="user">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-sm">
