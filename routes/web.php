@@ -46,7 +46,7 @@ Route::middleware("auth")
     Route::get('/test', 'HomeController@test')->name('test');
     // Route::get('/posts/create', 'HomeController@test')->name('posts.create');
     // Route::get('/posts/{post}/edit', 'HomeController@test')->name('posts.edit');
-
+    Route::get("/users" , "UsersController@index")->name("users.index");
     Route::resource("posts", "PostController");
   });
 
