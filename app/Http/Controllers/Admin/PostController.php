@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 class PostController extends Controller
 {
@@ -59,7 +60,7 @@ class PostController extends Controller
         $post = new Post();
 
         $post->fill($validatedData);
-        
+        $post->user_id=Auth::user()->id;
 
         $post->slug= Str::slug($post->title);
 
