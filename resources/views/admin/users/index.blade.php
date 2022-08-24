@@ -23,6 +23,7 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
+                  @if(Auth::user()->role=== 'admin')
                   <a class="btn btn-warning btn-sm" href="{{ route('admin.users.edit', ['user' => $user->id]) }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -31,6 +32,7 @@
                       <line x1="3" y1="22" x2="21" y2="22"></line>
                     </svg>
                   </a>
+                  @endif
                   {{-- <a class="btn btn-info btn-sm" href="{{ route('admin.users.show', ['user' => $user->slug]) }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

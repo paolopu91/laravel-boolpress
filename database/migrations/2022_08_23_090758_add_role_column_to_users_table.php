@@ -14,7 +14,7 @@ class AddRoleColumnToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string("role")->after("password")->default("users");
+            $table->string("role")->after("password")->default("user");
         });
     }
 
@@ -26,7 +26,7 @@ class AddRoleColumnToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            //
+            $table->dropColumn("role");
         });
     }
 }

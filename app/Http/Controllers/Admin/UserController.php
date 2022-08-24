@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\User;
 use App\UserDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,9 +17,13 @@ class UserController extends Controller
     }
 
     public function edit($id){
-        $user= User::findOrFail($id);
+        if (Auth::user()->role !== "admin") {
+            abort(401);
+        }
 
-        return view("admin.users.index", compact("user"));
+        $user = User::findOrFail($id);
+
+        return view("admin.users.edit", compact("user"));
     }
 
     public function update(Request $request, $id ){

@@ -1,13 +1,16 @@
+
 <?php
 
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-     /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -17,7 +20,19 @@ class HomeController extends Controller
         // $this->middleware('auth');
     }
 
-    public function index () {
-        return view ("admin.index");
+    public function index()
+    {
+        $usersCount = User::count();
+        $postsCount = Post::count();
+
+        return view("admin.index", [
+            "users_count" => $usersCount,
+            "posts_count" => $postsCount
+        ]);
+    }
+
+    public function test()
+    {
+        return "pagina admin senza autenticazione";
     }
 }
