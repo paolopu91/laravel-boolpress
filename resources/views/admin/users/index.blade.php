@@ -23,7 +23,7 @@
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
                 <td>
-                  <a class="btn btn-warning btn-sm" href="{{ route('admin.users.edit', ['user' => $user->slug]) }}">
+                  <a class="btn btn-warning btn-sm" href="{{ route('admin.users.edit', ['user' => $user->id]) }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                       fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                       class="feather feather-activity">
