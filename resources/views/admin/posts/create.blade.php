@@ -37,6 +37,21 @@
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
+                {{-- <div class="form-group">
+                    <label for="">Tags</label>
+                    <select type="text" name="tags[]" class="form-control" @error('tag_id') is-invalid @enderror multiple placeholder="Inserisci il titolo">
+                        <option value=""></option>
+                        @foreach ($tags as $tag)
+                            <option value="{{$tag->id}}"  >{{ $tag->name }}</option> --}}
+                            {{-- * {{ old("tag_id" $post->tag_id)===$tag->id ? 'selected' : '' }} --}}
+                        {{-- @endforeach
+                        @error('tag_id')
+                            <div class="invalid-feedback">{{message}}</div>
+                        @enderror
+                    </select>
+                </div> --}}
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-success">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
