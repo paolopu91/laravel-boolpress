@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -53,9 +54,12 @@ class PostController extends Controller
         //Valido i dati ricevuti
         $validatedData = $request->validate([
             "title"=>"required|min:10",
-            "content" => "required|min:10"
+            "content" => "required|min:10",
+            "tags"=>"nullable|exists:tags,id"
         ]);
 
+       
+        
         //Salvo nel db i dati del nuovo post creato
         $post = new Post();
 
@@ -90,6 +94,9 @@ class PostController extends Controller
             $post->save();
         return $toReturn;
         
+        if(key_exists("tags", $validatedData)){
+            $post->tags()->attach($validatedData["tags"]);
+        }
         //redirect su una pagina desiderata
         return redirect()->route("admin.posts.show" , $post->slug);
     }
@@ -117,8 +124,8 @@ class PostController extends Controller
     {
         
         $post = $this->findBySlug($slug);
-
-        return view("admin.posts.edit", compact("post"));
+        $tags= Tag::all();
+        return view("admin.posts.edit", compact("post", "tags"));
         
     }
 
@@ -131,14 +138,27 @@ class PostController extends Controller
      */
     public function update(Request $request, $slug)
     {
+        // dd($request->all());
         $validatedData = $request->validate([
             "title"=>"required|min:10",
-            "content" => "required|min:10"
+            "content" => "required|min:10",
+            "tags"=>"nullable|exists:tags,id"
         ]);
 
         $post = $this->findBySlug($slug);
 
+        // $post->tags()->detach();
+        // $post->tags()->attach($validatedData["tags"]);
+
+        if(key_exists("tags", $validatedData)){
+            $post->tags()->sync($validatedData["tags"]);
+        }else{
+            $post->tags()->sync([]);
+        }
+
+
         $post->update($validatedData);
+
         return redirect()->route("admin.posts.show" , $post->slug);
 
     }
