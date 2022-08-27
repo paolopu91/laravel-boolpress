@@ -7,6 +7,7 @@ use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 class PostController extends Controller
 {
@@ -142,10 +143,18 @@ class PostController extends Controller
         $validatedData = $request->validate([
             "title"=>"required|min:10",
             "content" => "required|min:10",
-            "tags"=>"nullable|exists:tags,id"
+            "tags"=>"nullable|exists:tags,id",
+            "cover_img"=>"nullable|image"
         ]);
 
+        // dd($validatedData);
         $post = $this->findBySlug($slug);
+        
+        if(key_exists("cover_img",$validatedData)){
+            $coverImg = Storage::put("/public/post_covers", $validatedData["cover_img"]);
+            $post->cover_img = $coverImg;
+            // dd($coverImg);
+        }
 
         // $post->tags()->detach();
         // $post->tags()->attach($validatedData["tags"]);
