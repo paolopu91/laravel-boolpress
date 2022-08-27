@@ -24,6 +24,16 @@
             <form action="{{ route('admin.posts.update', ['post' => $post->slug]) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+                
+                {{-- aggiunto form type file --}}
+                <div class="form-group">
+                    <label>Immagine di Copertina</label>
+                    <input type="file" name="cover_img" class="form-control-file @error('cover_img') is-invalid @enderror" placeholder="Inserisci il titolo" value="{{ old('cover_img', $post->cover_img) }}" required>
+                    @error('cover_img')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="form-group">
                     <label>Titolo</label>
                     <input type="text" name="title" class="form-control @error('title') is-invalid @enderror" placeholder="Inserisci il titolo" value="{{ old('title', $post->title) }}" required>
