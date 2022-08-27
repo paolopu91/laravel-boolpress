@@ -73,9 +73,9 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center position-ref full-height" style="background-color: lightblue">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="top-right links" style="margin-right: 8rem; margin-top:2rem">
                     @auth
                         <a href="{{ url('/admin') }}">Admin</a>
                     @else
@@ -96,10 +96,17 @@
                 </div>
             @endif
 
-            <div class="content">
+            <div class="content" style="background-color: antiquewhite">
                 <div class="title m-b-md">
-                    BoolPress
+                    <h1>
+                       BoolPress 
+                    </h1>
                 </div>
+                
+                <div>
+                    <img src="{{ asset("/img/welcome.png")}}" alt="">
+                </div>
+                
 
                 {{-- <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>

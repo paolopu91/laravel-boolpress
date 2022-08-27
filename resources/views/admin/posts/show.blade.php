@@ -10,7 +10,19 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><line x1="20" y1="12" x2="4" y2="12"></line><polyline points="10 18 4 12 10 6"></polyline></svg> Tutti i posts
                     </a>
                 </div>
-                <dl>
+
+                <div class="row">
+                    <div class="col">
+                        <div style="width: 100%; height: 100%">
+                            <img style="width: 100%; height: 100%" src="{{ asset('public/storage/' . $post->cover_img) }}" alt="">
+                        </div>
+                        
+                       
+                        
+                      
+                    </div>
+                    <div class="col">
+                        <dl>
                     <dt>Titolo</dt>
                     <dd>{{ $post->title }}</dd>
                     <dt>Slug</dt>
@@ -31,6 +43,13 @@
                         @endforeach
                         </dd>
                 </dl>
+                    </div>
+                </div>
+
+                
+
+                
+                
                 <a href="{{ route('admin.posts.edit', ['post' => $post->slug]) }}"
                    class="btn btn-warning">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg> Modifica
