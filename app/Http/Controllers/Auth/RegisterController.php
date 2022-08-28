@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\UserRegisteredMail;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\UserDetail;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -75,6 +77,8 @@ class RegisterController extends Controller
         $user->details->user_id = $user->id;
         $user->details->save();
 
+        Mail::to($user->email)->send(new UserRegisteredMail($user));
+        
         return $user;
     }
 }
