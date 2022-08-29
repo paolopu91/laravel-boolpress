@@ -3,6 +3,10 @@
 @section('content')
 <div class="container-fluid" style="background-color: lightblue">
 
+    <h6 class="text-center pb-4">
+        @{{message}}
+    </h6>
+
 
     <div class="container">
         <div class="row justify-content-center">

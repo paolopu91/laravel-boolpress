@@ -73,7 +73,7 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height" style="background-color: lightblue">
+        <div id="app" class="flex-center position-ref full-height" style="background-color: lightblue">
             @if (Route::has('login'))
                 <div class="top-right links" style="margin-right: 8rem; margin-top:2rem">
                     @auth
@@ -120,5 +120,6 @@
                 </div> --}}
             </div>
         </div>
+        <script src="{{asset("js/frontend.js")}}"></script>
     </body>
 </html>
