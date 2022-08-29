@@ -16,9 +16,9 @@ class UserRegisteredMail extends Mailable
      *
      * @return void
      */
-    public function __construct($user)
+    public function __construct($_user)
     {
-        $this->user = $user;
+        $this->user = $_user;
     }
 
     /**

@@ -26,10 +26,10 @@ class CreateUserDetailsTable extends Migration
             // $table->foreignId("user_id")
             // ->constrained();
 
-            $table->string('address')->nullable;
-            $table->string('city')->nullable;
-            $table->string('province')->nullable;
-            $table->string('phone')->nullable;
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('province')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }

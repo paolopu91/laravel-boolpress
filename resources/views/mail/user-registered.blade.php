@@ -6,9 +6,9 @@ Benvenuto sul mio sito.
 Per accedere al tuo account, clicca anche il link qui sotto:
 
 @component('mail::button', ['url' => route("login")])
-Button Text
+Accedi
 @endcomponent
 
 Cordiali Saluti,<br>
-Paolo Pugliese
+{{ config('app.name') }}
 @endcomponent

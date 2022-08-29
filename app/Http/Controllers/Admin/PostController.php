@@ -139,7 +139,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $slug)
     {
-        // dd($request->all());
+        //dd($request->all());
         $validatedData = $request->validate([
             "title"=>"required|min:10",
             "content" => "required|min:10",
