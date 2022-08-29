@@ -1,11 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="app" class="container-fluid" style="background-color: lightblue">
+<div class="container-fluid" style="background-color: lightblue">
 
-    <h6 class="text-center pb-4">
-        @{{message}}
-    </h6>
+    <h1 class="text-center pb-4">@{{ Saluto }}</h1>
 
 
     <div class="container">

@@ -49497,7 +49497,7 @@ var app = new Vue({
   el: '#app',
   data: function data() {
     return {
-      message: "hello message"
+      Saluto: "hello message"
     };
   }
 });

@@ -31,7 +31,7 @@ const app = new Vue({
     el: '#app',
     data(){
         return{
-            message:"hello message"
+            Saluto:"hello message"
         }
     }
 });
