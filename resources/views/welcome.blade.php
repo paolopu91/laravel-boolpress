@@ -9,68 +9,6 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-                display: flex;
-                align-items: center;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                padding-top: 2rem;
-                font-size: 84px;
-                color: #009eff;
-            }
-
-            .links > a {
-                color: #009eff;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-            .Log_on{
-                color: #6fc01ee8;
-            }
-            .No_Log{
-                color: red;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
     </head>
     <body>
         <div id="app" class="flex-center position-ref full-height" style="background-color: lightblue">
@@ -120,6 +58,6 @@
                 </div> --}}
             </div>
         </div>
-        <script src="{{asset("js/frontend.js")}}"></script>
+        <script src="{{ asset("js/frontend.js") }}"></script>
     </body>
 </html>

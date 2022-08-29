@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid" style="background-color: lightblue">
+<div id="app" class="container-fluid" style="background-color: lightblue">
 
     <h6 class="text-center pb-4">
         @{{message}}
@@ -42,6 +42,6 @@
             <a href="{{'/'}}">Welcome Page</a>
         </button>
     </div>
-
+    {{-- <script src="{{asset(js/backend.js) }}"></script>s --}}
 </div>
 @endsection
