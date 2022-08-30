@@ -1,0 +1,13 @@
+<template>
+    <div>
+        <h1>
+            pagina contatti
+        </h1>
+    </div>
+</template>
+
+<script>
+    export default{
+        
+    }
+</script>
