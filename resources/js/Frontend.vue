@@ -1,5 +1,11 @@
 <template>
-    <h1>{{message}}</h1>
+   <div>
+        <div class="container">
+            <h1 class="text-center">la canzone {{ message }}</h1>
+        </div>
+   </div> 
+    
+    
 </template>
 
 <script>
@@ -7,7 +13,7 @@
         data(){
             return{
                 message:"ciao ciao con le mani"
-            }
-        }
+            };
+        },
     }
 </script>

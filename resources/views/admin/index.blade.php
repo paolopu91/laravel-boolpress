@@ -3,6 +3,8 @@
 @section('content')
 <div class="container-fluid" style="background-color: lightblue">
 
+    <h1 class="text-center pb-4">@{{ Saluto }}</h1>
+
 
     <div class="container">
         <div class="row justify-content-center">
@@ -38,6 +40,6 @@
             <a href="{{'/'}}">Welcome Page</a>
         </button>
     </div>
-
+    {{-- <script src="{{asset(js/backend.js) }}"></script>s --}}
 </div>
 @endsection
