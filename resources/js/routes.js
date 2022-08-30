@@ -6,6 +6,5 @@ export const routes=[
 
     {path: "/" , component: Home , name:"Home"},
     {path: "/contatti" , component: Contacts , name:"Contacts"},
-    {path: "/posts/idpost" , component: PostShow , name:"Posts"},
-
+    {path: "/posts/:slug" , component: PostShow , name:"Posts"},
 ]

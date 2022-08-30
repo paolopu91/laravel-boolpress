@@ -20,7 +20,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
-
 // Route::middleware("auth")
 // ->namespace("Admin") //indica la cartella dove si trovani i controller
 // ->name("admin.") // Aggiunge prima del nome di ogni rotta questo prefisso
@@ -35,7 +34,6 @@ Route::get('/', 'HomeController@index')->name('home');
 
 //     Route::resource("posts", "PostController");
 // });
-
 
 Route::middleware("auth")
   ->namespace("Admin") // indica la cartella dove si trovano i controller
@@ -54,4 +52,10 @@ Route::middleware("auth")
     Route::resource("posts", "PostController");
   });
 
+
+
+
+  Route::get("{any?}", function(){
+    return view('welcome');
+  })->where("any", ".*");
 

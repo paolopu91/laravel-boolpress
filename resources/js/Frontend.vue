@@ -2,10 +2,11 @@
    <div>
     
        <Navbar></Navbar>
+
+       <div>
+            <router-view></router-view>
+       </div>
        
-        <div class="container">
-            <h1 class="text-center">la canzone {{ message }}</h1>
-        </div>
    </div> 
     
     
@@ -16,7 +17,7 @@ import Navbar from './components/Navbar.vue';
     export default{
     data() {
         return {
-            message: "ciao ciao con le mani"
+            // message: "ciao ciao con le mani"
         };
     },
     components: { Navbar }
