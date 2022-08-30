@@ -3,5 +3,5 @@ import Frontend from "./Frontend.vue";
 
 new Vue({
     el: "#app",
-    render:h=>(Frontend)
+    render: h=> h(Frontend)
 })

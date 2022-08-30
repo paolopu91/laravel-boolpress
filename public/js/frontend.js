@@ -12588,7 +12588,7 @@ __webpack_require__.r(__webpack_exports__);
 new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: "#app",
   render: function render(h) {
-    return _Frontend_vue__WEBPACK_IMPORTED_MODULE_1__["default"];
+    return h(_Frontend_vue__WEBPACK_IMPORTED_MODULE_1__["default"]);
   }
 });
 
